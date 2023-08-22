@@ -60,7 +60,7 @@ width, flags, padd, extra_c, padd_start));
 int print_non_printable(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-int i = 0, offset = 0;
+int wz = 0, offset = 0;
 char *str = va_arg(types, char *);
 UNUSED(flags);
 UNUSED(width);
@@ -70,17 +70,17 @@ UNUSED(size);
 if (str == NULL)
 return (write(1, "(null)", 6));
 
-while (str[i] != '\0')
+while (str[wz] != '\0')
 {
-if (is_printable(str[i]))
+if (is_printable(str[wz]))
 
-buffer[i + offset] = str[i];
+buffer[wz + offset] = str[wz];
 else
-offset += append_hexa_code(str[i], buffer, i + offset);
-i++;
+offset += append_hexa_code(str[wz], buffer, wz + offset);
+wz++;
 }
-buffer[i + offset] = '\0';
-return (write(1, buffer, i + offset));
+buffer[wz + offset] = '\0';
+return (write(1, buffer, wz + offset));
 }
 /************************* PRINT REVERSE *************************/
 /**

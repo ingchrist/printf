@@ -30,7 +30,7 @@ return (handle_write_char(c, buffer, flags, width, precision, size));
 int print_string(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-int length = 0, i;
+int length = 0, wz;
 char *str = va_arg(types, char *);
 UNUSED(buffer);
 UNUSED(flags);
@@ -54,13 +54,13 @@ if (width > length)
 if (flags & F_MINUS)
 {
 write(1, &str[0], length);
-for (i = width - length; i > 0; i--)
+for (wz = width - length; wz > 0; wz--)
 write(1, " ", 1);
 return (width);
 }
 else
 {
-for (i = width - length; i > 0; i--)
+for (wz = width - length; wz > 0; wz--)
 write(1, " ", 1);
 write(1, &str[0], length);
 return (width);
@@ -142,7 +142,7 @@ return (write_number(is_negative, i, buffer, flags, width, precision, size));
 int print_binary(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-unsigned int n, m, i, sum;
+unsigned int n, m, wz, sum;
 unsigned int a[32];
 int count;
 UNUSED(buffer);
@@ -153,18 +153,18 @@ UNUSED(size);
 n = va_arg(types, unsigned int);
 m = 2147483648; /* (2 ^ 31) */
 a[0] = n / m;
-for (i = 1; i < 32; i++)
+for (wz = 1; wz < 32; wz++)
 {
 m /= 2;
-a[i] = (n / m) % 2;
+a[wz] = (n / m) % 2;
 }
-for (i = 0, sum = 0, count = 0; i < 32; i++)
+for (wz = 0, sum = 0, count = 0; wz < 32; wz++)
 {
-sum += a[i];
+sum += a[wz];
 
-if (sum || i == 31)
+if (sum || wz == 31)
 {
-char z = '0' + a[i];
+char z = '0' + a[wz];
 write(1, &z, 1);
 count++;
 }

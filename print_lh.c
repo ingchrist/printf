@@ -1,14 +1,14 @@
 #include "main.h"
 /**
  * is_printable - Evaluates if a char is printable
- * @c: Char to be evaluated.
+ * @wz: Char to be evaluated.
  *
  * Return: 1 if c is printable, 0 otherwise
  */
-int is_printable(char c)
+int is_printable(char wz)
 {
 
-if (c >= 32 && c < 127)
+if (wz >= 32 && wz < 127)
 return (1);
 return (0);
 }
@@ -33,14 +33,14 @@ return (3);
 }
 /**
  * is_digit - Verifies if a char is a digit
- * @c: Char to be evaluated
+ * @wz: Char to be evaluated
  *
  * Return: 1 if c is a digit, 0 otherwise
  */
-int is_digit(char c)
+int is_digit(char wz)
 {
 
-if (c >= '0' && c <= '9')
+if (wz >= '0' && wz <= '9')
 return (1);
 return (0);
 }
