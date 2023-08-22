@@ -1,30 +1,30 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
-
+#ifndef HOLBERTON_H
+#define HOLBERTON_H
 #include <stdarg.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-
-int _printf(const char *format, ...);
-int (*check_specifier(const char*))(va_list);
 
 /**
- *  * struct func - struct for specifier to printer
- *   * @t: character to compare
- *    * @f: function to handle printing
- *     */
-typedef struct func
+ *   * struct specifiers - Struct specifiers
+ *     * @specifier: The conversion specifier
+ *       * @f: The function pointer
+ */
+typedef struct specifiers
 {
-		char *t;
-			int (*f)(va_list);
-} func_t;
+		char *specifier;
+			int (*f)(va_list args);
+} spc_dt;
 
-int print_char(va_list);
-int print_str(va_list);
-int print_cent(va_list);
-int print_int(va_list);
-int print_dec(va_list);
+int _write(char c);
+int _printf(const char *format, ...);
+int _print_a_char(va_list args);
+int _print_a_string(va_list args);
+int _print_format(const char *format, va_list args);
+int _print_spec(char format, va_list args);
+int _print_invalid_spec(char prev_format, char format, int count);
+int _print_a_integer(va_list args);
+void _recursion_integer(int a);
+int _print_int_binary(va_list args);
+void _recursion_int_binary(int a);
+int _validate_char(char _type);
 
-#endif
+#endif /* _HOLBERTON */
 
